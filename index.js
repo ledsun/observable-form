@@ -25,7 +25,7 @@ ObservableForm.prototype._observe = function observe() {
     self.listeners.push(self.fields[name](change));
 
     function change(value) {
-      self.emit('change', {name: name, value: value});
+      self.emit('change', {name: name, value: value}, self.toJSON());
     }
   }
 };

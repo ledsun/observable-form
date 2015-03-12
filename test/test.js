@@ -28,10 +28,11 @@ test('toJSON returns field values as json', function(t) {
 
 test('can monitor changes for a single input', function(t) {
   var observe = of(form);
-  t.plan(1);
+  t.plan(2);
 
-  observe.on('change', function(e) {
+  observe.on('change', function(e, j) {
     t.deepEqual(e, {name: 'name', value: 'x'});
+    t.deepEqual(j, {name: 'x', paynow: false, cardtype: 'MASTERCARD'})
     observe.cleanup();
   });
 
